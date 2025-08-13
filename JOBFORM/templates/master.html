@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'job_list.css' %}">
+    <title>Document</title>
+
+    {% block head %}
+
+    {% endblock %}
+
+</head>
+<style>
+    header {
+        display: flex;
+        border: 1px solid black;
+        background-color: rgb(16, 15, 15);
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar {
+        border: 4px solid black;
+        width: 1320px;
+       
+        
+
+
+    }
+
+    .logo {
+        
+        width: 200px;
+        color: whitesmoke;
+          border: 6px solid black;
+        padding-top: 20px;
+    }
+
+    .navbar ul {
+        display: flex;
+        list-style: none;
+          
+          margin-left: 200px;
+        
+        
+        
+
+    }
+
+    .navbar li {
+        border: 1px solid black;
+        margin: 30px 50px 0px 30px;
+
+
+    }
+    .navbar a:hover{
+        color: red;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    .nav {
+        display: flex;
+        text-align: end;
+    }
+     #btn{
+       border: 6px solid black; 
+       margin-left:  400px;
+    }
+    #btn:hover{
+        color: black;
+    }
+    body{
+       background-image: url('https://media.istockphoto.com/id/1201544779/photo/blank-front-real-black-chalkboard-background-texture-in-college-concept-for-back-to-school.jpg?s=2048x2048&w=is&k=20&c=b22lPoiUm4vHyGwnqHGp1qtLpTj1Mc-qe4s3h5fiwlU='); 
+    }
+
+    footer{
+       height: 130px;
+    }
+
+   
+   
+</style>
+</head>
+
+
+
+<body>
+    <header>
+
+
+        <div class="logo" style="font-size: larger;"> <center><strong>INSIDE JOB</strong></center> </div>
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="/job/">Home</a></li>
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <a href="/logout/" class="btn btn-outline-danger" id="btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </ul>
+
+            </nav>
+        </div>
+
+    </header>
+
+
+
+
+    {% block work %}
+
+    {% endblock %}
+    <footer style="background-color: #222; color: white; padding: 20px 0; text-align: center; margin-top: 20px;">
+        <div>
+            <h3>JobHub</h3>
+            <p>Your destination for top IT jobs in India</p>
+            <p style="margin-top: 15px;">&copy; 2025 INSIDE JOB. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

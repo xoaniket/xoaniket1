@@ -1,0 +1,35 @@
+body{
+  background-image: url('https://images.pexels.com/photos/414144/pexels-photo-414144.jpeg');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ justify-content: center;
+ align-items: center;
+ display: flex;
+ 
+}
+
+
+html,body{
+    height: 100%;
+   
+}
+.mb-3{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.container{
+   
+    padding-bottom: 10px;
+    justify-content: center;
+   
+}
+
+.custom-opacity{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-transparent {
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+   
+   
+}

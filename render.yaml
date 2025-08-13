@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: insidejob
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn JOBPROJECT.wsgi:application"
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: jobdb
+          property: connectionString
+
+databases:
+  - name: jobdb
+    plan: free
