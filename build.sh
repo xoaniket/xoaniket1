@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
-# exit on error
-set -o errexit
 
+# Install dependencies
 pip install -r requirements.txt
+
+# Apply migrations
+python manage.py migrate --noinput
+
+# Collect static files
 python manage.py collectstatic --noinput
-python manage.py migrate
+
+# Ensure superuser exists and is staff
 echo "from django.contrib.auth import get_user_model; \
 User = get_user_model(); \
-User.objects.filter(username='eren001').exists() or \
-User.objects.create_superuser('admin', 'eren2004@gmail.com', '1234567xo')" | python manage.py shell
+u, created = User.objects.get_or_create(username='eren001', defaults={'email':'eren2004@gmail.com','is_staff':True,'is_superuser':True}); \
+if not created: \
+    u.is_staff = True; u.is_superuser = True; u.save()" | python manage.py shell
