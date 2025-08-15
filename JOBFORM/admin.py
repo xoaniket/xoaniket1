@@ -1,15 +1,18 @@
 from django.contrib import admin
-from .models import JobApplication,JobPost
+from import_export.admin import ImportExportModelAdmin
+from .models import JobApplication, JobPost
 
 
-# Register your models here.
-
+# JobApplication Admin
 class JobApplicationAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'email', 'phone', 'applied_on')
 
-class JobPostAdmin(admin.ModelAdmin):
-     list_display = ('title', 'location', 'posted_on')
+
+# JobPost Admin with Import/Export
+@admin.register(JobPost)
+class JobPostAdmin(ImportExportModelAdmin):
+    list_display = ('title', 'location', 'posted_on')
 
 
-admin.site.register(JobApplication,JobApplicationAdmin)
-admin.site.register(JobPost,JobPostAdmin)
+# Register JobApplication
+admin.site.register(JobApplication, JobApplicationAdmin)

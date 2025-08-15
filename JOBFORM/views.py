@@ -27,11 +27,14 @@ def all_applications(request):
 
 # ALL THE JOBS ..........................................................................
 
+@login_required
 def job_list(request):
     jobs =  JobPost.objects.all().order_by('-posted_on')
     return render(request, 'job_list.html', {'jobs':jobs}) 
 
 # DETAIL ABOUT THE SPECIFIC JOB AND FORM................................................
+
+@login_required
 def job_detail(request,pk):
      job = JobPost.objects.get(pk = pk)
      if request.method == 'POST':
@@ -45,6 +48,10 @@ def job_detail(request,pk):
 
      return render(request, 'job_detail.html', {'form':form,'job':job})
 
+@login_required
+def about(request):
+    return render(request,'about.html')
+
 # SIGNUP PAGE...................................................................
 def signup(request):
     if request.method == 'POST':
@@ -56,8 +63,7 @@ def signup(request):
         form = SignupForm()
     return render(request,'registration/signup.html', {'form':form})    
 
-def about(request):
-    return render(request,'about.html')
+
 
 def customlogout(request):
     logout(request)

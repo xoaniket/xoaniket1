@@ -11,15 +11,3 @@ python manage.py collectstatic --noinput
 
 # Ensure superuser exists and has staff privileges
 python manage.py shell << END
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
-u, created = User.objects.get_or_create(
-    username='eren001',
-    defaults={'email':'eren2004@gmail.com','is_staff':True,'is_superuser':True}
-)
-if not created:
-    u.is_staff = True
-    u.is_superuser = True
-    u.save()
-END

@@ -31,13 +31,55 @@
      
     }
 
+    .banner{
+      background-image: url("{% static 'images/bglogin1.jpg' %}");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      
+      justify-content: center;
+      text-align: center;
+      border-bottom: 4px solid red;
+
+    }
+
+    .content{
+      background-color: rgba(240, 230, 210, 0.5);
+      padding: 2rem 3rem;
+      border: 3px double red;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    }
+    .content h1{
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .content p{
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
     
   </style>
 {% endblock %}
 
 {% block work %}
-  <div class="container" style="margin-top: 100px;">
-    <h1 class="my-4" style="color: whitesmoke;">AVAILABLE IT JOB POSTS</h1>
+
+<section class="banner">
+  <div class="content">
+    <h1> “Where Talent Meets Opportunity.”</h1>
+    <p> “Discover the best IT jobs, connect with leading companies, and grow your career.”</p>
+    <a href="#jobs" class="btn btn-danger">BROWSE JOBS</a>
+  </div>
+</section>
+
+  <div class="container" style="margin-top: 0px;" id="jobs">
+    <h1 class="my-3" style="color: whitesmoke;">AVAILABLE IT JOB POSTS</h1>
     <div class="job-container">
       {% for job in jobs %}
         <div class="column">

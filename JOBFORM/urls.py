@@ -2,14 +2,15 @@ from django.urls import path
 from . import views
 from django.views.generic import RedirectView
 from .views import CustomLoginView
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
 
     # ALL JOB POST
-    path('job/', views.job_list, name='job_list'),
+    path('job/', login_required(views.job_list), name='job_list'),
     # JOB DETAIL
-    path('job/<int:pk>/', views.job_detail, name='job_detail'),
-    path('about/', views.about, name='about'),
+    path('job/<int:pk>/', login_required(views.job_detail), name='job_detail'),
+    path('about/', login_required(views.about), name='about'),
 
 
 
