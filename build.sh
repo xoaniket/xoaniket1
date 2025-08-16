@@ -1,3 +1,15 @@
+#!/usr/bin/env bash
+set -o errexit  # exit on error if any command fails
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Apply migrations
+python manage.py migrate --noinput
+
+# Collect static files
+python manage.py collectstatic --noinput
+
 # Create or update superuser automatically
 python manage.py shell << END
 from django.contrib.auth import get_user_model
