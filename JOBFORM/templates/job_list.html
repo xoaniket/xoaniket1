@@ -10,7 +10,8 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      margin-top: 100px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      margin-top: 50px;
       justify-content: space-between;
       
     }
@@ -19,24 +20,25 @@
       flex: 1 1 22%;
       padding: 20px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: #f9f9f9;
+      border-radius: 10px;
+      background: #fff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background-color:darkgray;
     }
+
     .card{
       display: flex;
      
     }
 
     .banner{
-      background-image: url("{% static 'images/bg_home.jpg' %}");
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url("{% static 'images/bg_home.jpg' %}");
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      height: 90vh;
+      height: 85vh;
       display: flex;
       align-items: center;
       
@@ -47,7 +49,7 @@
     }
 
     .content{
-      background-color: rgba(240, 230, 210, 0.5);
+      background: rgba(0,0,0,0.5);
       padding: 2rem 3rem;
       border: 3px double red;
       border-radius: 12px;
@@ -57,11 +59,13 @@
     .content h1{
       font-size: 3rem;
       margin-bottom: 1rem;
+      color: #ddd;
     }
 
     .content p{
       font-size: 1.2rem;
       margin-bottom: 2rem;
+       color: #ddd;
     }
 
     
