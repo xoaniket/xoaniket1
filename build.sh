@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit  # exit on error if any command fails
 
 # Install dependencies
 pip install -r requirements.txt
@@ -8,6 +9,3 @@ python manage.py migrate --noinput
 
 # Collect static files
 python manage.py collectstatic --noinput
-
-# Ensure superuser exists and has staff privileges
-python manage.py shell 
