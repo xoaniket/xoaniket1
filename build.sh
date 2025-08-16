@@ -10,4 +10,4 @@ python manage.py migrate --noinput
 python manage.py collectstatic --noinput
 
 # Ensure superuser exists and has staff privileges
-python manage.py shell << END >>
+python manage.py shell 
