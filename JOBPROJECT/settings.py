@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'JOBFORM',
     'import_export',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

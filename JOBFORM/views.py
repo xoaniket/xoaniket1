@@ -25,6 +25,13 @@ def all_applications(request):
     form = JobApplication.objects.all().order_by('-applied_on')    
     return render (request, 'all_application.html', {'form':form})
 
+def delete(request,pk):
+    form = JobApplication.objects.get(pk=pk)
+    form.delete()
+    return redirect('/applications/')
+    
+    
+
 # ALL THE JOBS ..........................................................................
 
 @login_required
@@ -40,7 +47,7 @@ def job_detail(request,pk):
      if request.method == 'POST':
         form = JobApplicationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.job = job
+            form.instance.job = job
             form.save()
             return redirect('/job/')
      else:
@@ -70,6 +77,6 @@ def customlogout(request):
     return redirect('login')
 
 class CustomLoginView(LoginView):
-    authentication_form = LoginForm   
+    authentication_form = LoginForm 
     template_name = 'registration/login.html'
 

@@ -25,39 +25,48 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ['username', 'password1', 'password2']
 
-    def __init__(self, *args, **kwargs):
-        super(SignupForm, self).__init__(*args, **kwargs)
-
-        self.fields['username'].label = "USERNAME"
-        self.fields['password1'].label = "PASSWORD"
-        self.fields['password2'].label = "CONFIRM PASSWORD"
-
-        self.fields['username'].widget.attrs.update({
-            'placeholder': 'USERNAME',
-            'class': 'form-control'
-        })
-        self.fields['password1'].widget.attrs.update({
-            'placeholder': 'PASSWORD',
-            'class': 'form-control'
-        })
-        self.fields['password2'].widget.attrs.update({
-            'placeholder': 'CONFIRM PASSWORD',
-            'class': 'form-control'
-        })   
-
-
-class LoginForm(AuthenticationForm):
-     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Explicitly set attributes in __init__ for better control
-        self.fields['username'].widget.attrs.update({
+    username = forms.CharField(
+        label="USERNAME",
+        widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Enter your username'
         })
-        self.fields['password'].widget.attrs.update({
+    )
+    password1 = forms.CharField(
+        label="PASSWORD",
+        widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Enter your password'
         })
+    )
+    password2 = forms.CharField(
+        label="CONFIRM PASSWORD",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm your password'
+        })
+    )
+
+   
+
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(
+        label="USERNAME",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your username'
+        })
+    )
+    password = forms.CharField(
+        label="PASSWORD",
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your password'
+        })
+    )
+   
 
 
 

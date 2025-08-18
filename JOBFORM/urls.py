@@ -11,6 +11,7 @@ urlpatterns = [
     # JOB DETAIL
     path('job/<int:pk>/', login_required(views.job_detail), name='job_detail'),
     path('about/', login_required(views.about), name='about'),
+    path('del/<int:pk>/', views.delete, name='delete'),
 
 
 
