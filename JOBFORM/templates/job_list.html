@@ -1,84 +1,91 @@
 {% extends 'master.html' %}
 
 {% block head %}
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'job_list.css' %}"> 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+{% load static %}
+<link rel="stylesheet" href="{% static 'job_list.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>JobList | InsideJob</title>
+<style>
+  .job-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin-top: 50px;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
 
-  <style>
-    .job-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      margin-top: 50px;
-      justify-content: space-between;
-      
-    }
+  .column {
 
-    .column {
-      flex: 1 1 22%;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card{
-      display: flex;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
      
-    }
+  }
 
-    .banner{
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-              url("{% static 'images/bg_home.jpg' %}");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      height: 87.5vh;
-      display: flex;
-      align-items: center;
-      
-      justify-content: center;
-      text-align: center;
-      border-bottom: 4px solid red;
-
-    }
-
-    .content{
-      background: rgba(0,0,0,0.5);
-      padding: 2rem 3rem;
-      border: 3px double red;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-
-    }
-    .content h1{
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #ddd;
-    }
-
-    .content p{
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-       color: #ddd;
-    }
-    .date{
-      border: black solid 1px;
-      border-radius: 12px;
-
-      text-align: center;
-      font-size: 0.7rem;
-
-      
-    }
-
+  .column:hover{
     
-  </style>
+   border-color: red;
+  }
+
+  .card {
+    display: flex;
+
+  }
+
+  .banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("{% static 'images/bg_home.jpg' %}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 87.5vh;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    text-align: center;
+    border-bottom: 4px solid red;
+
+  }
+
+  .content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 2rem 3rem;
+    border: 3px double red;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+  }
+
+  .date {
+    display: inline-block;
+    background: #f8f9fa;
+    color: #333;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+
+
+  }
+</style>
 {% endblock %}
 
 {% block work %}
@@ -91,21 +98,22 @@
   </div>
 </section>
 
-  <div class="container" style="margin-top: 0px;" id="jobs">
-    <h1 class="my-3" style="color: whitesmoke;">AVAILABLE IT JOB POSTS</h1>
-    <div class="job-container">
-      {% for job in jobs %}
-        <div class="column">
+<div class="container" style="margin-top: 0px;" id="jobs">
+ <h1 class="my-3 text-center fw-bold" style="color: #222;">Available IT Job Posts</h1>
 
-          <p class="date">{{job.posted_on}}</p>
-            <h2>{{ job.title }}</h2>
-            <p><strong>Company:</strong> {{ job.company }}</p>
-            <p><strong>Location:</strong> {{ job.location }}</p>
-            <p><strong>Type:</strong> {{ job.job_type }}</p>
-            <a href="/job/{{ job.id }}" class="btn btn-danger mt-auto">View & Apply</a>
-          
-        </div>
-      {% endfor %}
+  <div class="job-container">
+    {% for job in jobs %}
+    <div class="column">
+
+      <p class="date">{{job.posted_on}}</p>
+      <h2>{{ job.title }}</h2>
+      <p><strong>Company:</strong> {{ job.company }}</p>
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Type:</strong> {{ job.job_type }}</p>
+      <a href="/job/{{ job.id }}" class="btn btn-danger mt-auto">View & Apply</a>
+
     </div>
+    {% endfor %}
   </div>
+</div>
 {% endblock %}
