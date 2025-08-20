@@ -10,7 +10,7 @@ from django.contrib.auth.forms import AuthenticationForm
 class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
-        fields = '__all__'
+        exclude = ['job']   # hidden on form
 
         widgets = {
             'dob': forms.DateInput(attrs={'type': 'date'}),

@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.contrib import messages   
 
 # Create your views here.
 def apply_job(request):
@@ -49,7 +50,10 @@ def job_detail(request,pk):
         if form.is_valid():
             form.instance.job = job
             form.save()
+            messages.success(request, "✅ Application submitted for this job!")
             return redirect('/job/')
+        else:
+              messages.error(request, "❌ Failed to apply for this job.")
      else:
         form = JobApplicationForm()
 

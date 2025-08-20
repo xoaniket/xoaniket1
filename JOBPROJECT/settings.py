@@ -3,6 +3,7 @@
 from pathlib import Path
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages
 
 
 
@@ -46,7 +47,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+   
 ROOT_URLCONF = 'JOBPROJECT.urls'
 
 TEMPLATES = [
@@ -138,3 +139,6 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'job_list'
 LOGOUT_REDIRECT_URL = 'login'
 CSRF_TRUSTED_ORIGINS = ['https://insidejob.onrender.com']
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",  # for Bootstrap
+}
