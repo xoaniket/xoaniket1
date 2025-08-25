@@ -23,7 +23,7 @@ class JobApplicationForm(forms.ModelForm):
             'profile_photo': forms.ClearableFileInput(attrs={'class':'form-control'}),
             'address': forms.Textarea(attrs={'class':'form-control', 'rows': 3}),
             'city': forms.TextInput(attrs={'class':'form-control'}),
-            'pincode': forms.CharField(attrs={'class':'form-control', 'placeholder':'6-digit pincode'}),
+            'pincode': forms.TextInput(attrs={'class':'form-control', 'placeholder':'6-digit pincode'}),
             'higest_qualification': forms.TextInput(attrs={'class':'form-control'}),
             'university_name': forms.TextInput(attrs={'class':'form-control'}),
             'passing_year': forms.NumberInput(attrs={'class':'form-control', 'min':1900, 'max':2100}),
