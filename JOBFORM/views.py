@@ -1,11 +1,14 @@
 from django.shortcuts import redirect, render
 from .form import JobApplicationForm, SignupForm,LoginForm
 from .models import JobApplication,JobPost
-from django.contrib.auth.forms import UserCreationForm
+
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.contrib import messages   
+from django.contrib import messages  
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
 
 # Create your views here.
 def apply_job(request):
@@ -30,7 +33,24 @@ def delete(request,pk):
     form = JobApplication.objects.get(pk=pk)
     form.delete()
     return redirect('/applications/')
-    
+
+def application_pdf(request,pk):
+    application = JobApplication.objects.get(pk=pk)
+
+    if application.profile_photo:
+        profile_photo_url = request.build_absolute_uri(application.profile_photo.url)
+
+    if application.resume:
+        resume_url = request.build_absolute_uri(application.resume.url)
+
+    html = render_to_string("application_pdf.html", {'application':application, "profile_photo_url": profile_photo_url,
+        "resume_url": resume_url,})
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attached; filename="application_{pk}.pdf"'  
+
+    pisa.CreatePDF(html, dest=response)
+    return response  
     
 
 # ALL THE JOBS ..........................................................................

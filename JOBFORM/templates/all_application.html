@@ -38,7 +38,7 @@
                 <th>PHOTO</th>
                 <th>NAME</th>
                 <th>JOB</th>
-                <th>STATE</th>
+                
                 <th>APPLIED ON</th>
                 <th>RESUME</th>
                 <th>DELETE</th>
@@ -57,13 +57,11 @@
                 </td>
                 <td>{{x.full_name}}</td>
                 <td>{{x.job.title}}</td>
-                <td>{{x.state}}</td>
+                
                 <td>{{x.applied_on}}</td>
-                <td> {% if x.resume %}
-                    <a href=" {{x.resume.url}}" download style="color: red;"> Download</a>
-                    {% else %}
-                    No File
-                    {% endif %}
+
+                <td> 
+                    <a href="/applications/{{x.pk}}/pdf/">DOWNLOAD</a>
                 </td>
                 <td><a class="btn btn-danger" href="/del/{{x.pk}}">DELETE</a></td>
             </tr>
