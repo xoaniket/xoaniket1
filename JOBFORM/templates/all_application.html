@@ -40,6 +40,7 @@
                 <th>JOB</th>
                 
                 <th>APPLIED ON</th>
+                <th>INFO</th>
                 <th>RESUME</th>
                 <th>DELETE</th>
 
@@ -59,6 +60,12 @@
                 <td>{{x.job.title}}</td>
                 
                 <td>{{x.applied_on}}</td>
+
+                <td>{% if x.resume %}
+                    <a href="{{x.resume.url}}" download> INFO </a>
+                    {% else %}
+                    No File
+                    {% endif %}</td>
 
                 <td> 
                     <a href="/applications/{{x.pk}}/pdf/">DOWNLOAD</a>

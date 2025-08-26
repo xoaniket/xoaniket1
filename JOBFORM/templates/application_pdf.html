@@ -83,7 +83,7 @@
             <th>Profile Photo</th>
             <td id="img">
                 {% if profile_photo_url %}
-               <img src="{{ application.profile_photo.url }}" alt="Profile Photo">
+               <img src="{{profile_photo_url }}" alt="Profile Photo">
 
                 {% else %}
                 No photo uploaded
@@ -142,16 +142,8 @@
             <td>{{ application.last_company }}</td>
         </tr>
        
-        <tr>
-            <th>Resume</th>
-            <td>
-                {% if resume_url %}
-                <a href="{{ resume_url }}">Download Resume</a>
-                {% else %}
-                No resume uploaded
-                {% endif %}
-            </td>
-        </tr>
+        
+           
     </table>
 </body>
 
