@@ -129,3 +129,14 @@ CSRF_TRUSTED_ORIGINS = ['https://insidejob-sdt7.onrender.com']
 MESSAGE_TAGS = {
     messages.ERROR: "danger",  # for Bootstrap
 }
+INSTALLED_APPS += ["cloudinary", "cloudinary_storage"]
+
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dwi741m96',
+    'API_KEY': '553569586425969',
+    'API_SECRET': 'slc1kKagP0q8mj208I5X-x9BQfM',
+}
+
+# Tell Django to use Cloudinary for media files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
