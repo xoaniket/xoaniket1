@@ -83,7 +83,8 @@
             <th>Profile Photo</th>
             <td id="img">
                 {% if profile_photo_url %}
-                <a href="{{ profile_photo_url }}" download><img src="{{ profile_photo_url }}" download></a>
+               <img src="{{ application.profile_photo.url }}" alt="Profile Photo">
+
                 {% else %}
                 No photo uploaded
                 {% endif %}
