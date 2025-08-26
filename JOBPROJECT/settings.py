@@ -115,7 +115,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/mnt/media'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -125,7 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'job_list'
 LOGOUT_REDIRECT_URL = 'login'
-CSRF_TRUSTED_ORIGINS = ['https://insidejob.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://insidejob-sdt7.onrender.com']
 MESSAGE_TAGS = {
     messages.ERROR: "danger",  # for Bootstrap
 }

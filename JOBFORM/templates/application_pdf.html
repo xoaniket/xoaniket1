@@ -13,12 +13,14 @@
             font-family: Arial, sans-serif;
             font-size: 12px;
             margin: 20px;
+            text-transform: uppercase;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         th,
@@ -28,7 +30,7 @@
             text-align: center;
             align-items: center;
             justify-content: center;
-            
+            text-transform: uppercase;
             text-align: left;
             font-size: 12px;
         }
@@ -47,9 +49,7 @@
             max-width: 155px;
             height: 120px;
         }
-        #img{
-
-        }
+       
     </style>
 </head>
 
@@ -83,7 +83,7 @@
             <th>Profile Photo</th>
             <td id="img">
                 {% if profile_photo_url %}
-                <a href="{{ profile_photo_url }}" download><img src="{{ profile_photo_url }}" dowload></a>
+                <a href="{{ profile_photo_url }}" download><img src="{{ profile_photo_url }}" download></a>
                 {% else %}
                 No photo uploaded
                 {% endif %}
