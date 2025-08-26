@@ -10,7 +10,7 @@ GENDER_CHOICES = [
 ]
 
 STATE_CHOICES =[
-    ('', 'CHOOSE CITIES'),
+    ('', 'CHOOSE STATES'),
     ('DL', 'Delhi'),
     ('MH', 'Maharashtra'),
     ('KA', 'Karnataka'),
@@ -50,7 +50,7 @@ class JobApplication(models.Model):
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=2, choices=STATE_CHOICES)
-    pincode = models.CharField(max_length=10)
+    pincode = models.CharField(max_length=6)
 
     # EDUCATION
     higest_qualification = models.CharField(max_length=100)
@@ -58,7 +58,7 @@ class JobApplication(models.Model):
     passing_year = models.IntegerField()
 
     # EXPERIENCE
-    experience = models.DecimalField(max_digits=4, decimal_places=1)
+    experience = models.FloatField()
     last_company = models.CharField(max_length=150, blank=True, null=True)
     skills = models.CharField(max_length=300)
     resume = models.FileField(upload_to='APPLICANT_RESUMES/')

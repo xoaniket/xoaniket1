@@ -8,15 +8,11 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 class JobApplicationForm(forms.ModelForm):
-     pincode = forms.CharField(
-        max_length=6,
-        widget=forms.TextInput(attrs={
-            'class':'form-control',
-            'placeholder':'6-digit pincode'
-        })),
-     class Meta:
+     
+    class Meta:
         model = JobApplication
-        exclude = ['job']   # hidden on form
+        exclude = ['job','skills']   # hidden on form
+        
 
         
 
@@ -31,11 +27,11 @@ class JobApplicationForm(forms.ModelForm):
             'profile_photo': forms.ClearableFileInput(attrs={'class':'form-control'}),
             'address': forms.Textarea(attrs={'class':'form-control', 'rows': 3}),
             'city': forms.TextInput(attrs={'class':'form-control'}),
-
+            'pincode': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '6-digit pincode','type': 'text'}),
             'higest_qualification': forms.TextInput(attrs={'class':'form-control'}),
             'university_name': forms.TextInput(attrs={'class':'form-control'}),
             'passing_year': forms.NumberInput(attrs={'class':'form-control', 'min':1900, 'max':2100}),
-            'experience': forms.NumberInput(attrs={'class':'form-control', 'min':0, 'step':1}),
+            'experience': forms.NumberInput(attrs={'class':'form-control'}),
             'last_company': forms.TextInput(attrs={'class':'form-control'}),
             'resume': forms.ClearableFileInput(attrs={'class':'form-control'}),
         }

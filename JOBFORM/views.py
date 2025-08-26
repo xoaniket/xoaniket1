@@ -47,7 +47,7 @@ def application_pdf(request,pk):
         "resume_url": resume_url,})
 
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attached; filename="application_{pk}.pdf"'  
+    response['Content-Disposition'] = 'inline; filename="application_{pk}.pdf"'  
 
     pisa.CreatePDF(html, dest=response)
     return response  
@@ -73,7 +73,8 @@ def job_detail(request,pk):
             messages.success(request, "✅ Application submitted for this job!")
             return redirect('/job/')
         else:
-              messages.error(request, "❌ Failed to apply for this job.")
+               print(form.errors)   # DEBUG
+               messages.error(request, f"❌ Failed to apply for this job. Errors: {form.errors}")
      else:
         form = JobApplicationForm()
 
