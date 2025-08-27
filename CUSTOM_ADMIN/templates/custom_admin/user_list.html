@@ -2,28 +2,32 @@
 
 {% block head %}
 <title>USER LIST</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% endblock %}
 
 {% block work %}
 <div class="container mt-4">
-   
+
 
     <h3>All Users</h3>
-    <table class="table table-bordered table-hover bg-white">
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            
-        </tr>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.email }}</td>
-            
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover bg-white">
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 </div>
 {% endblock %}
