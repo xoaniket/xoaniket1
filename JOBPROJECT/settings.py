@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'JOBFORM',
     'import_export',
     'widget_tweaks',
+    'CUSTOM_ADMIN'
 ]
 
 MIDDLEWARE = [

@@ -18,9 +18,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
+from JOBFORM import views
+
 
 urlpatterns = [
-    path('xoaniket/', admin.site.urls),
+    path('admin/', admin.site.urls),
+   path("myadmin/", include("CUSTOM_ADMIN.urls", namespace="custom_admin")),
+
+
     path('', include('JOBFORM.urls')),
     path('accounts/', include('django.contrib.auth.urls')), 
 ]

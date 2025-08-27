@@ -1,0 +1,87 @@
+{% extends 'master.html'%}
+
+{% block head %}
+
+<style>
+    .container {
+
+        text-align: center;
+        justify-content: space-between;
+        
+       
+        gap: 20px;
+        max-width: 1100px;
+        background: #fff;
+        overflow-y: auto;
+        text-transform: uppercase;
+        
+    }
+
+    .container th {
+        color: red;
+    }
+  
+</style>
+{% endblock %}
+
+
+
+    
+
+{% block work %}
+
+<h2>All Applications</h2>
+<div class="container ">
+    <table class="table table-bordered table-striped mt-3">
+        <thead>
+            <tr>
+                <th>PHOTO</th>
+                <th>NAME</th>
+                <th>JOB</th>
+                
+                <th>APPLIED ON</th>
+                <th>INFO</th>
+                <th>RESUME</th>
+                <th>DELETE</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in app %}
+            <tr>
+                <td>{% if x.profile_photo %}
+                    <a href="{{x.profile_photo.url}}" download> <img src="{{x.profile_photo.url}}" width="50"
+                            height="50" download> </a>
+                    {% else %}
+                    No File
+                    {% endif %}
+                </td>
+                <td>{{x.full_name}}</td>
+                <td>{{x.job.title}}</td>
+                
+                <td>{{x.applied_on}}</td>
+
+                <td>{% if x.resume %}
+                    <a href="{{x.resume.url}}" download> INFO </a>
+                    {% else %}
+                    No File
+                    {% endif %}</td>
+
+                <td> 
+                    <a href="/applications/{{x.pk}}/pdf/">DOWNLOAD</a>
+                </td>
+                <td><a class="btn btn-danger" href="{% url 'custom_admin:del_app' x.pk %}">DELETE</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

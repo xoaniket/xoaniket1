@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from .form import JobApplicationForm, SignupForm,LoginForm
 from .models import JobApplication,JobPost
-
+ 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
+
 
 # Create your views here.
 def apply_job(request):
@@ -104,4 +105,8 @@ def customlogout(request):
 class CustomLoginView(LoginView):
     authentication_form = LoginForm 
     template_name = 'registration/login.html'
+
+
+
+
 

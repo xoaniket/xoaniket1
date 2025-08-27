@@ -1,0 +1,15 @@
+{% extends "custom_admin/dashboard.html" %}
+{% block head %}
+
+<title>JOB FORM</title>
+{% endblock %}
+
+{% block work %}
+<h2 class="mb-3">Job Form</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Save</button>
+  <a href="{% url 'job_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
