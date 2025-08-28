@@ -1,46 +1,65 @@
-{% extends "custom_admin/dashboard.html" %}
-
-{% block head %}
+{% extends "custom_admin/dashboard.html" %} {% block head %}
 
 <title>JOB LIST</title>
 
-{% endblock %}
-{% block work %}
+<style>
+  .table thead th {
+    background-color: rgb(63, 0, 122);
+    color: #fff;
+  }
+
+  .table{
+     border-radius: 12px;        /* Round table corners */
+  overflow: hidden;           /* Ensures header/rows follow rounding */
+  border: 1px solid #ddd;
+    
+  }
+</style>
+
+{% endblock %} {% block work %}
 <div class="d-flex justify-content-between align-items-center mb-3">
-  <h2 class="m-0">Jobs</h2>
+  <h2 class="m-0">JOBS</h2>
   <div>
     <a class="btn btn-secondary" href="#">Import CSV</a>
     <a class="btn btn-info" href="#">Export CSV</a>
-    <a class="btn btn-success" href="{% url 'custom_admin:job_add' %}">+ Add Job</a>
+    <a class="btn btn-success" href="{% url 'custom_admin:job_add' %}"
+      >+ Add Job</a
+    >
   </div>
 </div>
 
-
 <div class="table-responsive">
-<table class="table table-bordered table-hover bg-white">
-  <thead class="table-dark">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Company</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for job in jobs %}
-    <tr>
-      <td>{{ job.id }}</td>
-      <td>{{ job.title }}</td>
-      <td>{{ job.company }}</td>
-      <td>
-        <a class="btn btn-sm btn-primary" href="{% url 'custom_admin:job_edit' job.id %}">Edit</a>
-        <a class="btn btn-sm btn-danger" href="{% url 'custom_admin:job_del' job.id %}">Delete</a>
-      </td>
-    </tr>
-    
-    
-    {% endfor %}
-  </tbody>
-</table>
+  <table class="table table-bordered  table-hover bg-white">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Company</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+      <tr>
+        <td>{{ job.id }}</td>
+        <td>{{ job.title }}</td>
+        <td>{{ job.company }}</td>
+        <td>
+          <a
+            class="btn btn-sm btn-primary"
+            href="{% url 'custom_admin:job_edit' job.id %}"
+            >Edit</a
+          >
+          <a
+            class="btn btn-sm btn-danger"
+            href="{% url 'custom_admin:job_del' job.id %}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

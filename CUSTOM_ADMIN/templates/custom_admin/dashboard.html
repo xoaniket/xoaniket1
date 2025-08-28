@@ -13,17 +13,99 @@
     html, body{
         height: 100%;
     }
+
+     header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #3F007A;
+        border-bottom: 3px solid rgb(15, 14, 14);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        margin-bottom: 6vh;
+    }
+
+    .logo {
+        color: #fff;
+        font-weight: 200;
+        font-size: 1.0rem;
+        letter-spacing: 1px;
+    }
+
+    .job-head nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    .job-head nav a {
+        text-decoration: none;
+        font-weight: 500;
+        color: white;
+        transition: color 0.3s ease;
+    }
+
+    .job-head nav a:hover {
+        color: rgb(2, 2, 2);
+    }
+
+    .job-head nav .btn:hover {
+        color: black;
+    }
+
+    /* Make logout consistent */
+    .job-head nav .btn {
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .card{
+        background-color: #3F007A;
+    }
+
+  #btn-logout:hover{
+     background: rgb(111, 66, 193);  /* Fill purple on hover */
+     color: #fff;                    
+  }
+
+   
 </style>
 
-<body style="background-color: bisque; height: 100;">
+<body style="background-color: rgb(142, 167, 198); height: 100;">
+
+
+
+  <header class="job-head">
+        <div class="logo"> HI! ANIKET, WELCOME BACK</div>
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="/myadmin/">HOME</a></li>
+                    <li><a href="/about/">ABOUT</a></li>
+                    <li><a class="btn btn-outline-primary ms-3" id="btn-logout"  href="/logout/">
+                        LOGOUT <i class="bi bi-box-arrow-right"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
 <div class="container">
+
 {% block work %}
 
     <h2>Admin Dashboard</h2>
+
+    
+
+
     <div class="row mt-4">
         <div class="col-md-12">
-            <div class="card text-white bg-primary mb-3">
+            <div class="card text-white mb-3">
                 <div class="card-header">Jobs</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ jobs_count }}</h5>
@@ -33,7 +115,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="card text-white bg-success mb-3">
+            <div class="card text-white mb-3">
                 <div class="card-header">Applications</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ apps_count }}</h5>
@@ -42,7 +124,7 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="card text-white bg-warning mb-3">
+            <div class="card text-white mb-3">
                 <div class="card-header">Users</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ users_count }}</h5>
@@ -52,6 +134,8 @@
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
 </body>

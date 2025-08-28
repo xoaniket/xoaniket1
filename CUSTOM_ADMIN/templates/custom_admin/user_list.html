@@ -3,7 +3,23 @@
 {% block head %}
 <title>USER LIST</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+      .table thead th{
+        background-color: rgb(63, 0, 122);
+        color: #fff;
+    }
+
+    .table{
+     border-radius: 12px;        /* Round table corners */
+    overflow: hidden;           /* Ensures header/rows follow rounding */
+    border: 1px solid #ddd;
+    }
+    
+</style>
 {% endblock %}
+
+
 
 {% block work %}
 <div class="container mt-4">
@@ -12,12 +28,15 @@
     <h3>All Users</h3>
     <div class="table-responsive">
         <table class="table table-bordered table-hover bg-white">
-            <tr>
+            <thead>
+              <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Email</th>
 
-            </tr>
+              </tr>
+            </thead>
+           
             {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>

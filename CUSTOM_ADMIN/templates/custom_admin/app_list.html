@@ -1,24 +1,37 @@
-{% extends 'master.html'%}
+{% extends "custom_admin/dashboard.html" %}
 
 {% block head %}
 
 <style>
-    .container {
+    table {
 
-        text-align: center;
-        justify-content: space-between;
-        
-       
-        gap: 20px;
-        max-width: 1100px;
-        background: #fff;
-        overflow-y: auto;
-        text-transform: uppercase;
-        
+        text-transform: uppercase;    
     }
 
-    .container th {
-        color: red;
+
+    .table thead th{
+        background-color: #3F007A;
+        color: #fff;
+    }
+
+    .container{
+        margin-top: 6dvh;
+    }
+
+    .table{
+     border-radius: 12px;        /* Round table corners */
+    overflow: hidden;           /* Ensures header/rows follow rounding */
+    border: 1px solid #ddd;
+    }
+
+    td a{
+    color: #3F007A;
+    text-decoration: none;
+        
+    }
+    td a:hover{
+        color: black;
+        font-weight: 600;
     }
   
 </style>
@@ -29,10 +42,10 @@
     
 
 {% block work %}
-
-<h2>All Applications</h2>
-<div class="container ">
-    <table class="table table-bordered table-striped mt-3">
+<div class="container">
+    <div class="app"><h2>All Applications</h2></div>
+<div class="table-responsive ">
+    <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
                 <th>PHOTO</th>
@@ -40,8 +53,8 @@
                 <th>JOB</th>
                 
                 <th>APPLIED ON</th>
-                <th>INFO</th>
                 <th>RESUME</th>
+                <th>INFO</th>
                 <th>DELETE</th>
 
             </tr>
@@ -62,13 +75,13 @@
                 <td>{{x.applied_on}}</td>
 
                 <td>{% if x.resume %}
-                    <a href="{{x.resume.url}}" download> INFO </a>
+                    <a href="{{x.resume.url}}" download> DOWNLOAD </a>
                     {% else %}
                     No File
                     {% endif %}</td>
 
                 <td> 
-                    <a href="/applications/{{x.pk}}/pdf/">DOWNLOAD</a>
+                    <a href="/applications/{{x.pk}}/pdf/">PDF</a>
                 </td>
                 <td><a class="btn btn-danger" href="{% url 'custom_admin:del_app' x.pk %}">DELETE</a></td>
             </tr>
@@ -79,9 +92,7 @@
 </div>
 
 
-
-
-
+</div>
 
 
 {% endblock %}
