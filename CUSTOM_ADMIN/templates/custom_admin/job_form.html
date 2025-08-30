@@ -2,14 +2,63 @@
 {% block head %}
 
 <title>JOB FORM</title>
+
+<style>
+    .container{
+        background-color: rgb(212, 204, 218);
+        border: 1px none blueviolet;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+</style>
 {% endblock %}
 
 {% block work %}
-<h2 class="mb-3">Job Form</h2>
+<div class="container">
+    <h2 class="mb-3">Job Form</h2>
 <form method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
+
+<div class="row">
+     <div class="col-md-4 mb-3">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+     </div>
+      <div class="col-md-4 mb-3">
+            {{ form.company.label_tag }}
+            {{ form.company }}
+     </div>
+      <div class="col-md-4 mb-3">
+            {{ form.location.label_tag }}
+            {{ form.location }}
+     </div>
+</div>
+
+<div class="row">
+     <div class="col-md-6 mb-3">
+            {{ form.job_type.label_tag }}
+            {{ form.job_type }}
+     </div>
+      <div class="col-md-6 mb-3">
+            {{ form.salary.label_tag }}
+            {{ form.salary }}
+     </div>
+</div>
+
+<div class="row">
+     <div class="col-md-6 mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+     </div>
+      <div class="col-md-6 mb-3">
+            {{ form.requirements.label_tag }}
+            {{ form.requirements }}
+     </div>
+</div>
+
   <button type="submit" class="btn btn-success">Save</button>
-  <a href="{% url 'job_list' %}" class="btn btn-secondary">Cancel</a>
+  <a href="{% url 'custom_admin:jobs_list' %}" class="btn btn-secondary">Cancel</a>
 </form>
+</div>
+
 {% endblock %}

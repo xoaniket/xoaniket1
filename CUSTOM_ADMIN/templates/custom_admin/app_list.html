@@ -33,6 +33,8 @@
         color: black;
         font-weight: 600;
     }
+
+   
   
 </style>
 {% endblock %}
@@ -83,7 +85,7 @@
                 <td> 
                     <a href="/applications/{{x.pk}}/pdf/">PDF</a>
                 </td>
-                <td><a class="btn btn-danger" href="{% url 'custom_admin:del_app' x.pk %}">DELETE</a></td>
+                <td><a class="btn btn-danger " href="{% url 'custom_admin:del_app' x.pk %}">DELETE</a></td>
             </tr>
             {% endfor %}
         </tbody>
